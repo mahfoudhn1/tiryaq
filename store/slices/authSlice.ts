@@ -8,10 +8,10 @@ interface AuthState {
 
 const MOCK_STUDENT: User = {
   id: 'u-1',
-  name: 'Aya Benali',
-  email: 'Aya.benali@tiryaq.com',
+  name: 'Aya Zmt',
+  email: 'Aya.Zmt@tiryaq.com',
   role: 'STUDENT',
-  initials: 'AB',
+  initials: 'AZ',
   year: 'MS-V',
 };
 
