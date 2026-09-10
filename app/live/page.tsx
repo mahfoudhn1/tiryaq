@@ -18,7 +18,7 @@ import { cn } from '@/lib/utils/cn';
 type TabFilter = 'all' | 'live' | 'upcoming' | 'ended';
 
 const CHAT_MESSAGES = [
-  { id: 1, author: 'Sara B.', initials: 'SB', body: 'Can you go back to the STEMI criteria for inferior leads?', time: '10:22' },
+  { id: 1, author: 'Aya B.', initials: 'SB', body: 'Can you go back to the STEMI criteria for inferior leads?', time: '10:22' },
   { id: 2, author: 'Omar K.', initials: 'OK', body: 'What about LBBB — does that always mandate cath?', time: '10:23' },
   { id: 3, author: 'Dr. Haddad', initials: 'AH', body: 'Great question Omar — yes by Sgarbossa criteria, check slide 14.', time: '10:24', instructor: true },
   { id: 4, author: 'Fatima A.', initials: 'FA', body: 'Thanks! Very clear explanation on the reciprocal changes.', time: '10:25' },

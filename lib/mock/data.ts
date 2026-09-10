@@ -38,7 +38,7 @@ export const MOCK_INSTRUCTORS: Instructor[] = [
   },
   {
     id: 'inst-4',
-    name: 'Dr. Sara Chikh',
+    name: 'Dr. Aya Chikh',
     specialty: 'Nephrology',
     rating: 4.8,
     studentCount: 3920,

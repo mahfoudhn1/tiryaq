@@ -9,7 +9,7 @@ import { useAppDispatch } from '@/store/hooks';
 import type { UserRole } from '@/types/medical';
 
 const DEMO_ACCOUNTS: { role: UserRole; label: string; description: string; email: string }[] = [
-  { role: 'STUDENT', label: 'Student', description: 'Sara Benali · MS-V', email: 'sara.benali@tiryaq.com' },
+  { role: 'STUDENT', label: 'Student', description: 'Aya Benali · MS-V', email: 'Aya.benali@tiryaq.com' },
   { role: 'INSTRUCTOR', label: 'Instructor', description: 'Dr. Amine Haddad · Cardiology', email: 'amine.haddad@tiryaq.com' },
   { role: 'ADMIN', label: 'Administrator', description: 'Platform operations', email: 'admin@tiryaq.com' },
 ];
