@@ -11,7 +11,7 @@ const MOCK_STUDENT: User = {
   name: 'Aya Benali',
   email: 'Aya.benali@tiryaq.com',
   role: 'STUDENT',
-  initials: 'SB',
+  initials: 'AB',
   year: 'MS-V',
 };
 
