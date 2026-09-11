@@ -25,6 +25,17 @@ function LocaleInitializer({ children }: { children: React.ReactNode }) {
   return children;
 }
 
+function ThemeInitializer({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = storedTheme ? storedTheme === 'dark' : prefersDark;
+    document.documentElement.classList.toggle('dark', isDark);
+  }, []);
+
+  return children;
+}
+
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: { queries: { staleTime: 30_000, retry: 1 } },
@@ -33,9 +44,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
       <LocaleInitializer>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <ThemeInitializer>
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        </ThemeInitializer>
       </LocaleInitializer>
     </Provider>
   );

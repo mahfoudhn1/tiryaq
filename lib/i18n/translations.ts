@@ -9,6 +9,8 @@ const en = {
   security: 'Security',
   language: 'Language',
   languageDescription: 'Choose the language used across the application.',
+  darkMode: 'Dark mode',
+  darkModeDescription: 'Use a darker color palette across the application.',
   english: 'English',
   french: 'French',
   arabic: 'Arabic',

@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Bell, CreditCard, Lock, User as UserIcon } from 'lucide-react';
+import { Bell, CreditCard, Lock, Moon, Sun, User as UserIcon } from 'lucide-react';
 import { AppShell } from '@/components/layout/AppShell';
 import { Avatar } from '@/components/ui/Avatar';
 import { Badge } from '@/components/ui/Badge';
@@ -41,6 +41,7 @@ export default function SettingsPage() {
   const dispatch = useAppDispatch();
   const { language, t } = useLocale();
   const [saved, setSaved] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const resolver = useMemo(() => zodResolver(profileSchema(t)), [t]);
 
   const { register, handleSubmit, formState: { errors } } = useForm<ProfileForm>({
@@ -52,6 +53,12 @@ export default function SettingsPage() {
   const changeLanguage = (nextLanguage: Language) => {
     dispatch(setLanguage(nextLanguage));
     window.localStorage.setItem('language', nextLanguage);
+  };
+  const toggleTheme = () => {
+    const nextIsDark = !document.documentElement.classList.contains('dark');
+    document.documentElement.classList.toggle('dark', nextIsDark);
+    window.localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
+    setIsDark(nextIsDark);
   };
 
   return (
@@ -115,6 +122,26 @@ export default function SettingsPage() {
                       </button>
                     ))}
                   </div>
+                </div>
+
+                <div className="mb-6 flex items-center justify-between gap-4 rounded-xl bg-[#f8fafc] p-4">
+                  <div>
+                    <p className="text-[13px] font-bold text-[#0f172a]">{t('darkMode')}</p>
+                    <p className="mt-1 text-[12px] text-[#64748b]">{t('darkModeDescription')}</p>
+                  </div>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-checked={isDark}
+                    aria-label={t('darkMode')}
+                    onClick={toggleTheme}
+                    className={cn(
+                      'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0e7490] focus-visible:ring-offset-2',
+                      isDark ? 'border-[#0e7490] bg-[#0e7490] text-white' : 'border-[#dce7eb] bg-white text-[#64748b] hover:border-[#0e7490] hover:text-[#0e7490]',
+                    )}
+                  >
+                    {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                  </button>
                 </div>
 
                 <div className="mb-6 flex items-center gap-4">

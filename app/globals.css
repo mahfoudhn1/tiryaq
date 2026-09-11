@@ -18,6 +18,209 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.dark {
+  --background: #0d1b1f;
+  --foreground: #e2e8f0;
+}
+
+.dark body,
+.dark .bg-\[\#f5f9fa\],
+.dark .bg-\[\#f4f8f8\] {
+  background: #0d1b1f;
+  color: #e2e8f0;
+}
+
+.dark .bg-white {
+  background-color: #172a30 !important;
+}
+
+.dark .bg-white\/90 {
+  background-color: rgb(23 42 48 / 90%) !important;
+}
+
+.dark .shadow-\[0_16px_40px_rgba\(15\,23\,42\,0\.12\)\] {
+  --tw-shadow-color: rgb(0 0 0 / 35%);
+}
+
+.dark .bg-\[\#f8fafc\],
+.dark .bg-\[\#f1f5f9\],
+.dark .bg-\[\#f0fdfd\] {
+  background-color: #20363d !important;
+}
+
+.dark .text-\[\#0f172a\] {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-\[\#0B192C\],
+.dark .text-\[\#334155\] {
+  color: #d7e3e6 !important;
+}
+
+.dark .text-\[\#64748B\] {
+  color: #a9bbc1 !important;
+}
+
+.dark .text-\[\#334155\],
+.dark .text-\[\#64748b\] {
+  color: #a9bbc1 !important;
+}
+
+.dark .text-\[\#94a3b8\] {
+  color: #8299a1 !important;
+}
+
+.dark .border-\[\#dce7eb\],
+.dark .border-\[\#e2eaee\],
+.dark .border-\[\#f1f5f9\] {
+  border-color: #304950 !important;
+}
+
+.dark .bg-\[\#F4F7FB\],
+.dark .bg-gray-50,
+.dark .bg-gray-50\/50,
+.dark .bg-gray-100,
+.dark .bg-gray-200 {
+  background-color: #20363d !important;
+}
+
+.dark .bg-\[\#EAF2FF\] {
+  background-color: #18313b !important;
+}
+
+.dark .bg-\[\#e0f7f7\] {
+  background-color: #16424a !important;
+}
+
+.dark .bg-\[\#0B192C\] {
+  background-color: #09161a !important;
+}
+
+.dark .bg-\[\#3B82F6\] {
+  background-color: #0e7490 !important;
+}
+
+.dark .from-\[\#e0f7f7\] {
+  --tw-gradient-from: #203f43 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(32 63 67 / 0%) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.dark .to-\[\#dbeafe\] {
+  --tw-gradient-to: #203447 var(--tw-gradient-to-position);
+}
+
+.dark .bg-white\/5,
+.dark .bg-white\/10 {
+  background-color: rgb(255 255 255 / 8%) !important;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200\/60,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #304950 !important;
+}
+
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #d7e3e6 !important;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-600 {
+  color: #a9bbc1 !important;
+}
+
+.dark .text-\[\#3B82F6\] {
+  color: #7dd3fc !important;
+}
+
+.dark .border-\[\#3B82F6\]\/10,
+.dark .border-\[\#3B82F6\]\/15 {
+  border-color: rgb(125 211 252 / 25%) !important;
+}
+
+.dark .border-emerald-200,
+.dark .border-amber-200,
+.dark .border-blue-200,
+.dark .border-red-200 {
+  border-color: #3b555b !important;
+}
+
+.dark .bg-emerald-50,
+.dark .bg-amber-50,
+.dark .bg-blue-50,
+.dark .bg-red-50 {
+  background-color: #20363d !important;
+}
+
+.dark .bg-emerald-100,
+.dark .bg-red-100 {
+  background-color: #28434a !important;
+}
+
+.dark .hover\:bg-gray-50:hover {
+  background-color: #20363d !important;
+}
+
+.dark .hover\:bg-gray-50\/50:hover {
+  background-color: #20363d !important;
+}
+
+.dark .hover\:bg-\[\#f8fafc\]:hover {
+  background-color: #20363d !important;
+}
+
+/* The public home page keeps its original light editorial palette. */
+.dark .home-page {
+  background-color: #f5f9fa !important;
+  color: #0f172a !important;
+}
+
+.dark .home-page .bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark .home-page .bg-\[\#f8fafc\],
+.dark .home-page .bg-\[\#f1f5f9\],
+.dark .home-page .bg-\[\#f0fdfd\] {
+  background-color: #f8fafc !important;
+}
+
+.dark .home-page .bg-\[\#f1f5f9\] {
+  background-color: #f1f5f9 !important;
+}
+
+.dark .home-page .bg-\[\#f0fdfd\] {
+  background-color: #f0fdfd !important;
+}
+
+.dark .home-page .text-\[\#0f172a\],
+.dark .home-page .text-\[\#334155\] {
+  color: #0f172a !important;
+}
+
+.dark .home-page .text-\[\#64748b\] {
+  color: #64748b !important;
+}
+
+.dark .home-page .text-\[\#94a3b8\] {
+  color: #94a3b8 !important;
+}
+
+.dark .home-page .border-\[\#dce7eb\],
+.dark .home-page .border-\[\#e2eaee\] {
+  border-color: #dce7eb !important;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  color-scheme: dark;
+}
+
 ::selection {
   background: #a8d9d8;
   color: #0f172a;
