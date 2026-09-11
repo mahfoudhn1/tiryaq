@@ -9,6 +9,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   GraduationCap,
+  PillBottle,
   HeartPulse,
   LayoutDashboard,
   Settings,
@@ -39,6 +40,7 @@ const NAV: NavItem[] = [
   { label: 'cases', href: '/cases', icon: Stethoscope, roles: ['STUDENT'] },
   { label: 'liveClasses', href: '/live', icon: Video, roles: ['STUDENT'] },
   { label: 'analytics', href: '/analytics', icon: BarChart3, roles: ['STUDENT'] },
+  { label: 'clinicalDoseCalculator', href: '/clinical-dose', icon: PillBottle, roles: ['STUDENT'] },
   { label: 'settings', href: '/settings', icon: Settings, roles: ['STUDENT', 'INSTRUCTOR', 'ADMIN'] },
   // Instructor
   { label: 'dashboard', href: '/instructor', icon: LayoutDashboard, roles: ['INSTRUCTOR'] },
