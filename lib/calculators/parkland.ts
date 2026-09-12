@@ -158,7 +158,7 @@ function calculateParkland(values: Record<string, string>): CalculationOutcome {
       ? [
           {
             id: 'remainingRate',
-            labelKey: 'remainingHourlyRate',
+            labelKey: 'remainingHourlyRate' as const,
             value: round(remainingRate, 0).toLocaleString('en-US'),
             unit: 'mL/h',
           },
