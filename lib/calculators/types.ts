@@ -72,16 +72,6 @@ export type CalculationOutcome =
     }
   | { ok: false; errors: CalculatorErrors };
 
-/** Collects a field value from another calculator's stored result. */
-export interface CalculatorImport {
-  /** Calculator id whose stored result should be read. */
-  sourceCalculatorId: string;
-  /** Key within that result's `data`. */
-  sourceDataKey: string;
-  /** Translation key for the "import" affordance label. */
-  labelKey: TranslationKey;
-}
-
 /**
  * Language-neutral, client-side calculator definition. Adding a calculator is
  * a matter of implementing one of these and registering it, with no changes to
@@ -95,8 +85,6 @@ export interface CalculatorDefinition {
   titleKey: TranslationKey;
   descriptionKey: TranslationKey;
   fields: readonly CalculatorField[];
-  /** Optional per-field import from another calculator's structured result. */
-  imports?: Record<string, CalculatorImport>;
   /** Literal mathematical formula shown in the formula section. */
   formula: string;
   formulaDescriptionKey: TranslationKey;

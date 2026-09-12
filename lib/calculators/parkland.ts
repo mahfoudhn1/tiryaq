@@ -196,13 +196,6 @@ export const parklandCalculator: CalculatorDefinition = {
   titleKey: 'parklandFormula',
   descriptionKey: 'parklandDescription',
   fields,
-  imports: {
-    tbsa: {
-      sourceCalculatorId: 'burn-tbsa',
-      sourceDataKey: 'tbsaPercent',
-      labelKey: 'importFromBurnTbsa',
-    },
-  },
   formula: '4 mL × weight (kg) × TBSA (%) = total 24 h',
   formulaDescriptionKey: 'parklandFormulaDescription',
   interpretationKey: 'parklandInterpretation',
