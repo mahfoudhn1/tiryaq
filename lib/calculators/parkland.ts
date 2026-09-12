@@ -3,6 +3,7 @@ import type {
   CalculatorDefinition,
   CalculatorErrors,
   CalculatorField,
+  CalculatorMetric,
 } from './types';
 import type { TranslationKey } from '@/lib/i18n/translations';
 import { assignError, validateNumberField } from './validation';
@@ -127,7 +128,7 @@ function calculateParkland(values: Record<string, string>): CalculationOutcome {
     return { ok: false, errors: { hoursSinceBurn: ZERO_REMAINING_TIME_ERROR } };
   }
 
-  const metrics = [
+  const metrics: CalculatorMetric[] = [
     {
       id: 'total24h',
       labelKey: 'total24hFluid',
