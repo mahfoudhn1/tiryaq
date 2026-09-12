@@ -15,6 +15,9 @@ interface NomenclaturePayload {
   medicines: Array<Record<string, unknown>>;
 }
 
+const NOMENCLATURE_VERSION = '2025-registered-products-v1';
+const NOMENCLATURE_VERSION_KEY = 'nomenclature_seed_version';
+
 const db = new Dexie('tiryaq-clinical-local') as Dexie & {
   medications: Table<AlgerianMedication, string>;
 };
@@ -24,13 +27,14 @@ db.version(1).stores({
 });
 
 function stringValue(value: unknown): string {
-  return typeof value === 'string' ? value.trim() : '';
+  if (typeof value === 'string') return value.trim();
+  return typeof value === 'number' && Number.isFinite(value) ? String(value) : '';
 }
 
 function normalizeMedication(raw: Record<string, unknown>, index: number): AlgerianMedication | null {
-  const registrationNumber = stringValue(raw['Unnamed: 1']);
-  const dci = stringValue(raw['Unnamed: 3']);
-  const brandName = stringValue(raw['Unnamed: 4']);
+  const registrationNumber = stringValue(raw.registrationNumber);
+  const dci = stringValue(raw.inn);
+  const brandName = stringValue(raw.brandName);
 
   if (!dci && !brandName) return null;
 
@@ -39,10 +43,10 @@ function normalizeMedication(raw: Record<string, unknown>, index: number): Alger
     registration_number: registrationNumber,
     brand_name: brandName || dci,
     dci: dci || brandName,
-    form: stringValue(raw['Unnamed: 5']),
-    dosage: stringValue(raw['Unnamed: 6']),
-    laboratory: stringValue(raw['Unnamed: 12']),
-    is_reimbursable: stringValue(raw['Unnamed: 9']).toUpperCase() === 'HOP',
+    form: stringValue(raw.form),
+    dosage: stringValue(raw.strength),
+    laboratory: stringValue(raw.manufacturer),
+    is_reimbursable: stringValue(raw.p1).toUpperCase() === 'HOP',
   };
 }
 
@@ -64,8 +68,8 @@ export function initializeNomenclature(): Promise<void> {
 async function seedNomenclature(): Promise<void> {
   if (typeof window === 'undefined') return;
 
-  const recordCount = await db.medications.count();
-  if (recordCount > 0) {
+  const seededVersion = window.localStorage.getItem(NOMENCLATURE_VERSION_KEY);
+  if (seededVersion === NOMENCLATURE_VERSION && (await db.medications.count()) > 0) {
     window.localStorage.setItem('nomenclature_seeded', 'true');
     return;
   }
@@ -80,6 +84,8 @@ async function seedNomenclature(): Promise<void> {
     .map(normalizeMedication)
     .filter((medication): medication is AlgerianMedication => medication !== null);
 
+  await db.medications.clear();
   await db.medications.bulkPut(medications);
+  window.localStorage.setItem(NOMENCLATURE_VERSION_KEY, NOMENCLATURE_VERSION);
   window.localStorage.setItem('nomenclature_seeded', 'true');
 }

@@ -10,6 +10,15 @@ interface MedicationSearchState {
   executionTimeMs: number | null;
 }
 
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim()
+    .toUpperCase();
+}
+
 export function useMedicationSearch(query: string): MedicationSearchState {
   const [state, setState] = useState<MedicationSearchState>({ results: [], isLoading: true, error: null, executionTimeMs: null });
 
@@ -20,12 +29,28 @@ export function useMedicationSearch(query: string): MedicationSearchState {
       try {
         await initializeNomenclature();
         const startedAt = performance.now();
-        const normalizedQuery = query.trim().toLocaleUpperCase();
+        const normalizedQuery = normalizeSearchText(query);
         const results = normalizedQuery
-          ? await nomenclatureDb.medications.filter((medication) => medication.brand_name.toLocaleUpperCase().includes(normalizedQuery) || medication.dci.toLocaleUpperCase().includes(normalizedQuery)).limit(20).toArray()
+          ? await nomenclatureDb.medications
+              .filter((medication) => {
+                const brandName = normalizeSearchText(medication.brand_name);
+                const dci = normalizeSearchText(medication.dci);
+                return brandName.includes(normalizedQuery) || dci.includes(normalizedQuery);
+              })
+              .toArray()
           : [];
+        results.sort((left, right) => {
+          const leftBrand = normalizeSearchText(left.brand_name);
+          const leftDci = normalizeSearchText(left.dci);
+          const rightBrand = normalizeSearchText(right.brand_name);
+          const rightDci = normalizeSearchText(right.dci);
+          const leftRank = leftBrand === normalizedQuery || leftDci === normalizedQuery ? 0 : leftBrand.startsWith(normalizedQuery) || leftDci.startsWith(normalizedQuery) ? 1 : 2;
+          const rightRank = rightBrand === normalizedQuery || rightDci === normalizedQuery ? 0 : rightBrand.startsWith(normalizedQuery) || rightDci.startsWith(normalizedQuery) ? 1 : 2;
+          return leftRank - rightRank || left.brand_name.localeCompare(right.brand_name);
+        });
+        const limitedResults = results.slice(0, 20);
         const executionTimeMs = performance.now() - startedAt;
-        if (!cancelled) setState({ results, isLoading: false, error: null, executionTimeMs });
+        if (!cancelled) setState({ results: limitedResults, isLoading: false, error: null, executionTimeMs });
       } catch (error) {
         if (!cancelled) setState({ results: [], isLoading: false, executionTimeMs: null, error: error instanceof Error ? error.message : 'Local search failed' });
       }
