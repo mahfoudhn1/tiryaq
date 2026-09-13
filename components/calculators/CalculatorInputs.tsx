@@ -1,6 +1,6 @@
 'use client';
 
-import { Download, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 
 import { Button } from '@/components/ui/Button';
 import { useLocale } from '@/lib/i18n/useLocale';
@@ -77,10 +77,13 @@ export function CalculatorInputs({
                       : 'border-[#dce7eb] focus:border-[#0e7490] focus:ring-[#0e7490]/20'
                   )}
                 >
-                  <option value="" disabled>{t('selectOptionPlaceholder')}</option>
+                  <option value="" disabled={field.required !== false}>
+                    {t('selectOptionPlaceholder')}
+                  </option>
                   {field.options?.map((option) => (
                     <option key={option.value} value={option.value}>
-                      {option.value} - {field.optionLabel ? field.optionLabel(language, option) : t(option.labelKey)}
+                      {field.showOptionValue === false ? '' : `${option.value} - `}
+                      {field.optionLabel ? field.optionLabel(language, option) : t(option.labelKey)}
                     </option>
                   ))}
                 </select>

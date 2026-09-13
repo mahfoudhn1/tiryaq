@@ -40,7 +40,7 @@ export function CalculatorResult({ calculator, outcome, hasInput }: CalculatorRe
                   {t(metric.labelKey)}
                 </p>
                 <p className="mt-2 text-4xl font-bold">
-                  {metric.value}
+                  {metric.valueKey ? t(metric.valueKey) : metric.value}
                   {metric.unit && (
                     <span className={cn(
                       'ml-1 text-sm font-medium',

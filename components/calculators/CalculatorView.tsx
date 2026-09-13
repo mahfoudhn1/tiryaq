@@ -15,7 +15,9 @@ interface CalculatorViewProps {
 }
 
 function emptyValues(calculator: CalculatorDefinition): Record<string, string> {
-  return Object.fromEntries(calculator.fields.map((field) => [field.id, '']));
+  return Object.fromEntries(
+    calculator.fields.map((field) => [field.id, field.defaultValue ?? ''])
+  );
 }
 
 export function CalculatorView({ calculator }: CalculatorViewProps) {
@@ -24,7 +26,11 @@ export function CalculatorView({ calculator }: CalculatorViewProps) {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const outcome = useMemo(() => calculator.calculate(values), [calculator, values]);
   const errors = outcome.ok ? {} : outcome.errors;
-  const hasInput = calculator.fields.some((field) => values[field.id]?.trim() !== '');
+  const hasInput = calculator.fields.some((field) => {
+    const value = values[field.id]?.trim() ?? '';
+    if (value === '') return false;
+    return field.defaultValue === undefined || value !== field.defaultValue;
+  });
 
   const updateField = (id: string, value: string) => {
     setValues((previous) => ({ ...previous, [id]: value }));

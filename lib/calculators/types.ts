@@ -25,6 +25,12 @@ export interface CalculatorField {
   max?: number;
   step?: number;
   inputMode?: 'decimal' | 'numeric';
+  /** Initial value, used for selects with a preset default (e.g. a formula). */
+  defaultValue?: string;
+  /** When false, an empty value is allowed and the select is optional. */
+  required?: boolean;
+  /** When true, the option's raw value is prefixed to its label (e.g. GCS "4 - Spontaneous"). */
+  showOptionValue?: boolean;
   /** Required when `type` is `'select'`. */
   options?: readonly CalculatorOption[];
   /**
@@ -39,7 +45,10 @@ export interface CalculatorField {
 export interface CalculatorMetric {
   id: string;
   labelKey: TranslationKey;
+  /** Literal value shown when `valueKey` is not set. */
   value: string;
+  /** Translation key used instead of `value` for non-numeric labels (e.g. formula name). */
+  valueKey?: TranslationKey;
   unit?: string;
   /** Rendered as the headline value. */
   primary?: boolean;

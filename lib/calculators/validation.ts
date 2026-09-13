@@ -74,7 +74,40 @@ export function validateNumberField(
 export function assignError(
   errors: CalculatorErrors,
   fieldId: string,
-  result: NumberFieldResult
+  result: { ok: true } | { ok: false; error: TranslationKey }
 ): void {
   if (!result.ok) errors[fieldId] = result.error;
 }
+
+export const INVALID_OPTION_ERROR: TranslationKey = 'invalidSelectionError';
+
+export type SelectFieldResult =
+  | { ok: true; value: string | null }
+  | { ok: false; error: TranslationKey };
+
+/**
+ * Reusable single-field select validation. Ensures a choice was made (when
+ * required) and that it is one of the declared options, so impossible values
+ * cannot be scored.
+ */
+export function validateSelectField(
+  raw: string | undefined,
+  allowed: readonly string[],
+  options: { required?: boolean } = {}
+): SelectFieldResult {
+  const value = raw?.trim() ?? '';
+  const required = options.required !== false;
+
+  if (value === '') {
+    return required
+      ? { ok: false, error: REQUIRED_FIELD_ERROR }
+      : { ok: true, value: null };
+  }
+
+  if (!allowed.includes(value)) {
+    return { ok: false, error: INVALID_OPTION_ERROR };
+  }
+
+  return { ok: true, value };
+}
+
