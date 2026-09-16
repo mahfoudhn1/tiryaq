@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/*
+ * Drive `dark:` utilities from the `.dark` class toggled by the app theme
+ * setting, instead of the OS `prefers-color-scheme`. Without this, components
+ * using `dark:` (notably the calculator pages) ignore the in-app theme toggle.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f4f8f8;
   --foreground: #0f172a;
