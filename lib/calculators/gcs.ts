@@ -142,6 +142,7 @@ export const gcsCalculator: CalculatorDefinition = {
   id: 'gcs',
   slug: 'gcs',
   categoryKey: 'emergencyAndTrauma',
+  alsoInCategories: ['clinicalScores'],
   titleKey: 'glasgowComaScale',
   descriptionKey: 'gcsDescription',
   fields: [eyeField, verbalField, motorField],

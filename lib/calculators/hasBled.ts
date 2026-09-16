@@ -79,6 +79,7 @@ export const hasBledCalculator: CalculatorDefinition = {
   id: 'has-bled',
   slug: 'has-bled',
   categoryKey: 'cardiology',
+  alsoInCategories: ['clinicalScores'],
   titleKey: 'hasBledScore',
   descriptionKey: 'hasBledDescription',
   fields,

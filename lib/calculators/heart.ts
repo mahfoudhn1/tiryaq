@@ -95,6 +95,7 @@ export const heartScoreCalculator: CalculatorDefinition = {
   id: 'heart-score',
   slug: 'heart-score',
   categoryKey: 'cardiology',
+  alsoInCategories: ['clinicalScores'],
   titleKey: 'heartScore',
   descriptionKey: 'heartDescription',
   fields,

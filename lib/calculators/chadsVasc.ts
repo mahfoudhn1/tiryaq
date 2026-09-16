@@ -102,6 +102,7 @@ export const chadsVascCalculator: CalculatorDefinition = {
   id: 'chads-vasc',
   slug: 'chads-vasc',
   categoryKey: 'cardiology',
+  alsoInCategories: ['clinicalScores'],
   titleKey: 'chaScore',
   descriptionKey: 'chaDescription',
   fields,

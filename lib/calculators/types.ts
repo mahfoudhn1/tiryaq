@@ -91,6 +91,11 @@ export interface CalculatorDefinition {
   /** URL segment, e.g. /emergency/<slug>. */
   slug: string;
   categoryKey: TranslationKey;
+  /**
+   * Additional category ids this calculator is also listed under. Used to tag
+   * an existing calculator into another section without duplicating it.
+   */
+  alsoInCategories?: readonly string[];
   titleKey: TranslationKey;
   descriptionKey: TranslationKey;
   fields: readonly CalculatorField[];
