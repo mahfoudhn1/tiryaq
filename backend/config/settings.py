@@ -91,17 +91,39 @@ ASGI_APPLICATION = "config.asgi.application"
 
 # ── Database (PostgreSQL) ───────────────────────────────────────────────────
 
-DATABASES = {
-    "default": {
+def _database_from_url(url: str) -> dict:
+    """Parse a postgres:// DATABASE_URL (e.g. Render's Internal Database URL)."""
+    from urllib.parse import unquote, urlparse
+
+    parsed = urlparse(url)
+    return {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "tiryaq"),
-        "USER": os.getenv("DB_USER", "mahfoud"),
-        "PASSWORD": os.getenv("DB_PASSWORD", "mahfoud1996"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "5432"),
+        "NAME": parsed.path.lstrip("/"),
+        "USER": unquote(parsed.username or ""),
+        "PASSWORD": unquote(parsed.password or ""),
+        "HOST": parsed.hostname or "",
+        "PORT": str(parsed.port or 5432),
         "CONN_MAX_AGE": int(os.getenv("DB_CONN_MAX_AGE", "60")),
     }
-}
+
+
+# On Render, set DATABASE_URL (or link the database so Render injects it).
+# Falls back to the individual DB_* variables for local development.
+_DATABASE_URL = os.getenv("DATABASE_URL")
+if _DATABASE_URL:
+    DATABASES = {"default": _database_from_url(_DATABASE_URL)}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("DB_NAME", "tiryaq"),
+            "USER": os.getenv("DB_USER", "mahfoud"),
+            "PASSWORD": os.getenv("DB_PASSWORD", "mahfoud1996"),
+            "HOST": os.getenv("DB_HOST", "localhost"),
+            "PORT": os.getenv("DB_PORT", "5432"),
+            "CONN_MAX_AGE": int(os.getenv("DB_CONN_MAX_AGE", "60")),
+        }
+    }
 
 # ── Auth ────────────────────────────────────────────────────────────────────
 
