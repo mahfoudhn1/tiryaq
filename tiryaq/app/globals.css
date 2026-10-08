@@ -287,8 +287,8 @@ body {
    no general dark rule any more: they render at their light values on
    their own. Only the classes shared with the app need re-identities. */
 .dark .home-page {
-  background-color: #FFFFFF !important;
-  color: #0F2A3D !important;
+  background-color: #F4F9FD !important;
+  color: #123247 !important;
 }
 
 .dark .home-page .bg-white {
@@ -301,6 +301,53 @@ body {
 
 .dark .home-page .text-\[\#5B7184\] {
   color: #5B7184 !important;
+}
+
+/* ---- Home typography ---------------------------------------------------
+   Geist for UI, Newsreader (serif) for display headlines. Arabic switches
+   the whole page to Cairo and keeps headlines in Cairo too. Scoped to the
+   marketing page so the app shell is untouched. */
+.home-page {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.home-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.home-page[lang="ar"] {
+  font-family: var(--font-arabic), var(--font-geist-sans), sans-serif;
+}
+
+.home-page[lang="ar"] .home-display {
+  font-family: var(--font-arabic), var(--font-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* ---- Scroll reveal -----------------------------------------------------
+   Subtle fade/rise only. Disabled entirely under reduced-motion. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ---- Native controls & selection -------------------------------------- */

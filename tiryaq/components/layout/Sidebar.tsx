@@ -80,8 +80,8 @@ export function Sidebar() {
       {/* Sidebar panel */}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col overflow-hidden rounded-r-3xl border-r border-white/20 bg-[#075985]/90 bg-gradient-to-b from-[#38BDF8]/6 via-transparent to-[#0C4A6E]/35 shadow-[10px_0_44px_rgba(6,45,70,0.25),inset_1px_0_0_rgba(255,255,255,0.14)] backdrop-blur-2xl transition-transform duration-300 ease-out lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:rounded-r-none',
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full',
+          'fixed inset-y-0 start-0 z-40 flex w-64 flex-col overflow-hidden rounded-e-3xl border-e border-white/20 bg-[#075985]/90 bg-gradient-to-b from-[#38BDF8]/6 via-transparent to-[#0C4A6E]/35 shadow-[10px_0_44px_rgba(6,45,70,0.25),inset_1px_0_0_rgba(255,255,255,0.14)] backdrop-blur-2xl transition-transform duration-300 ease-out lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 lg:rounded-e-none',
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full rtl:translate-x-full',
         )}
       >
         {/* Logo */}
@@ -120,13 +120,13 @@ export function Sidebar() {
                       'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-semibold transition-all duration-200',
                       active
                         ? 'bg-[#E0F2FE] text-[#0C4A6E] shadow-[0_6px_16px_rgba(6,58,90,0.25)]'
-                        : 'text-[#DCEEFC] hover:translate-x-0.5 hover:bg-white/10 hover:text-white',
+                        : 'text-[#DCEEFC] hover:translate-x-0.5 hover:bg-white/10 hover:text-white rtl:hover:-translate-x-0.5',
                     )}
                     aria-current={active ? 'page' : undefined}
                   >
                     <item.icon size={17} className={active ? 'text-[#0369A1]' : 'text-[#A9D8F5] group-hover:text-white'} />
                     {t(item.label)}
-                    {active && <ChevronRight size={14} className="ml-auto opacity-60" />}
+                    {active && <ChevronRight size={14} className="ms-auto opacity-60 rtl:rotate-180" />}
                   </Link>
                 </li>
               );

@@ -69,7 +69,7 @@ export function TopBar({ title }: { title?: string }) {
         >
           <ShoppingCart size={20} />
           {cartCount > 0 && (
-            <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#F0F9FF] text-[9px] font-bold text-[#0369A1]">
+            <span className="absolute -end-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#F0F9FF] text-[9px] font-bold text-[#0369A1]">
               {cartCount}
             </span>
           )}
@@ -85,14 +85,14 @@ export function TopBar({ title }: { title?: string }) {
           >
             <Bell size={20} />
             {unread > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#DC2626] text-[9px] font-bold text-white">
+              <span className="absolute -end-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#DC2626] text-[9px] font-bold text-white">
                 {unread}
               </span>
             )}
           </button>
 
           {notifOpen && (
-            <div className="glass-pop absolute right-0 top-12 z-50 w-80 overflow-hidden rounded-2xl border border-white/60 bg-white/92 shadow-[0_20px_50px_rgba(6,45,70,0.22)] backdrop-blur-2xl">
+            <div className="glass-pop absolute end-0 top-12 z-50 w-80 overflow-hidden rounded-2xl border border-white/60 bg-white/92 shadow-[0_20px_50px_rgba(6,45,70,0.22)] backdrop-blur-2xl">
               <div className="flex items-center justify-between border-b border-[#0369A1]/10 px-4 py-3">
                 <span className="text-[13px] font-bold text-[#0F2A3D]">{t('notifications')}</span>
                 <button
@@ -107,7 +107,7 @@ export function TopBar({ title }: { title?: string }) {
                   <li key={n.id} className={cn('border-b border-[#0369A1]/10 px-4 py-3 last:border-0', !n.read && 'bg-[#0369A1]/10')}>
                     <div className="flex items-start gap-2">
                       {!n.read && <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#0284C7]" aria-hidden />}
-                      <div className={cn(!n.read ? '' : 'ml-4')}>
+                      <div className={cn(!n.read ? '' : 'ms-4')}>
                         <p className="text-[12px] font-bold text-[#0F2A3D]">{n.title}</p>
                         <p className="mt-0.5 text-[11px] leading-4 text-[#5B7184]">{n.body}</p>
                         <p className="mt-1 text-[10px] text-[#5B7184]">{n.createdAt}</p>
@@ -136,7 +136,7 @@ export function TopBar({ title }: { title?: string }) {
             </button>
 
             {roleOpen && (
-              <div className="glass-pop absolute right-0 top-12 z-50 w-52 overflow-hidden rounded-2xl border border-white/60 bg-white/92 shadow-[0_20px_50px_rgba(6,45,70,0.22)] backdrop-blur-2xl">
+              <div className="glass-pop absolute end-0 top-12 z-50 w-52 overflow-hidden rounded-2xl border border-white/60 bg-white/92 shadow-[0_20px_50px_rgba(6,45,70,0.22)] backdrop-blur-2xl">
                 <div className="border-b border-[#0369A1]/10 px-4 py-3">
                   <p className="text-[12px] font-bold text-[#0F2A3D]">{user.name}</p>
                   <p className="text-[10px] text-[#5B7184]">{user.email}</p>
@@ -149,7 +149,7 @@ export function TopBar({ title }: { title?: string }) {
                       onClick={() => void changeRole(role)}
                       disabled={switching}
                       className={cn(
-                        'w-full rounded-lg px-3 py-2 text-left text-[12px] font-semibold transition-colors disabled:opacity-50',
+                        'w-full rounded-lg px-3 py-2 text-start text-[12px] font-semibold transition-colors disabled:opacity-50',
                         user.role === role ? 'bg-[#E0F2FE] text-[#0369A1]' : 'text-[#5B7184] hover:bg-[#0369A1]/10',
                       )}
                     >
