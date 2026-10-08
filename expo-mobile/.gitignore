@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
+
+# Native build folders
+android/
+ios/
+
+# Env
+.env
+.env.local
+.env*.local
+
+# OS
+.DS_Store

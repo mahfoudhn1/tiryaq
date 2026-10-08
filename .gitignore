@@ -1,0 +1,24 @@
+# ── Environment / secrets (never commit) ─────────────────────────────────────
+.env
+.env.*
+*.env
+!.env.example
+
+# ── Dependencies ─────────────────────────────────────────────────────────────
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# ── Build outputs ────────────────────────────────────────────────────────────
+.next/
+out/
+dist/
+build/
+staticfiles/
+*.log
+
+# ── OS / editor ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

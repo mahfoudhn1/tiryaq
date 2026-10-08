@@ -1,0 +1,18 @@
+0000000000000000000000000000000000000000 ce58b33693cb3339ee2e7dee3c841ac9ad9de343 mahfoudhn1 <mahfoudhn99@gmail.com> 1788814166 +0100	commit (initial): Initial commit from Create Next App
+ce58b33693cb3339ee2e7dee3c841ac9ad9de343 7f035363f7af4beea31507f7717d460b19e1e7d0 mahfoudhn1 <mahfoudhn99@gmail.com> 1789060933 +0100	commit: first commit
+7f035363f7af4beea31507f7717d460b19e1e7d0 0000000000000000000000000000000000000000 mahfoudhn1 <mahfoudhn99@gmail.com> 1789060940 +0100	Branch: renamed refs/heads/main to refs/heads/main
+7f035363f7af4beea31507f7717d460b19e1e7d0 7f035363f7af4beea31507f7717d460b19e1e7d0 mahfoudhn1 <mahfoudhn99@gmail.com> 1789060940 +0100	Branch: renamed refs/heads/main to refs/heads/main
+7f035363f7af4beea31507f7717d460b19e1e7d0 c8ec8165f433020bc3813918ef1d5917088083eb mahfoudhn1 <mahfoudhn99@gmail.com> 1789061184 +0100	commit: test frontend
+c8ec8165f433020bc3813918ef1d5917088083eb b5a3e216fc5a4c35cd27b824d9d908985352c540 mahfoudhn1 <mahfoudhn99@gmail.com> 1789061712 +0100	commit: changed some varriables
+b5a3e216fc5a4c35cd27b824d9d908985352c540 fe0347120a4dedaaa4f8606a8495b0182294ef45 mahfoudhn1 <mahfoudhn99@gmail.com> 1789061947 +0100	commit: changed initials
+fe0347120a4dedaaa4f8606a8495b0182294ef45 df7409335372b0612354fc4ef6d6140b5897702c mahfoudhn1 <mahfoudhn99@gmail.com> 1789062067 +0100	commit: changed some names
+df7409335372b0612354fc4ef6d6140b5897702c 71a79bacfabbab4b52a3c669126fea08d49c414e mahfoudhn1 <mahfoudhn99@gmail.com> 1789085054 +0100	commit: applied dark mode functionality
+71a79bacfabbab4b52a3c669126fea08d49c414e da795063e30c90077aec189b225f7b899d21593b mahfoudhn1 <mahfoudhn99@gmail.com> 1789171023 +0100	commit: adding dose calculator
+da795063e30c90077aec189b225f7b899d21593b 9c6a7e297cb8862c929892e28cb9c966ef76b533 mahfoudhn1 <mahfoudhn99@gmail.com> 1789171732 +0100	commit: fixed calculator
+9c6a7e297cb8862c929892e28cb9c966ef76b533 fab7e8f78a1833e6a798416ff1689ae31a40a350 mahfoudhn1 <mahfoudhn99@gmail.com> 1789255325 +0100	commit: added few calculators
+fab7e8f78a1833e6a798416ff1689ae31a40a350 17ce476e1a51d8b40840ee7665e0ce58c30b0bac mahfoudhn1 <mahfoudhn99@gmail.com> 1789255762 +0100	commit: fixed tyoe
+17ce476e1a51d8b40840ee7665e0ce58c30b0bac 4c9e800802bfd23a7b4f081b9251919d93fe1805 mahfoudhn1 <mahfoudhn99@gmail.com> 1789255959 +0100	commit: fixed type
+4c9e800802bfd23a7b4f081b9251919d93fe1805 d2bb2ded018c503c4de88ab5877d0214f4a88736 mahfoudhn1 <mahfoudhn99@gmail.com> 1789256511 +0100	commit: cleaner code + refactoring AI generated erros
+d2bb2ded018c503c4de88ab5877d0214f4a88736 67854a1dbd98f0472a8688aed8034faa7a1463bf mahfoudhn1 <mahfoudhn99@gmail.com> 1789341925 +0100	commit: added some calculators
+67854a1dbd98f0472a8688aed8034faa7a1463bf 2e8cd34aa58a82aa8de69506a68eddd93b5fe9a0 mahfoudhn1 <mahfoudhn99@gmail.com> 1789518659 +0100	commit: added some more calculators
+2e8cd34aa58a82aa8de69506a68eddd93b5fe9a0 d5b6b14ab50c38702c8948b4680b3fa2edccd8d5 mahfoudhn1 <mahfoudhn99@gmail.com> 1789518959 +0100	commit: fixed white mode

@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+/*
+ * Drive `dark:` utilities from the `.dark` class toggled by the app theme
+ * setting, instead of the OS `prefers-color-scheme`. Without this, components
+ * using `dark:` (notably the calculator pages) ignore the in-app theme toggle.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #0F2A3D;
+
+  /* Stronger frosted glass everywhere: every `backdrop-blur-xl`/`2xl`
+     resolves through these theme vars. (No bare `blur-xl/2xl` filters in
+     the codebase, so nothing else is affected.) */
+  --blur-xl: 40px;
+  --blur-2xl: 64px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---- More glassmorphism (light mode) ---------------------------------
+   Thinner card fill + brighter inner rim so the glass edge reads; the
+   blur radius itself is raised via --blur-xl/--blur-2xl above. */
+.bg-white\/75 {
+  background-color: rgb(255 255 255 / 65%);
+}
+
+.bg-white\/92 {
+  background-color: rgb(255 255 255 / 76%);
+}
+
+.shadow-\[0_10px_30px_rgba\(6\,45\,70\,0\.07\)\] {
+  --tw-shadow: 0 10px 30px rgb(6 45 70 / 7%), inset 0 1px 0 rgb(255 255 255 / 85%) !important;
+}
+
+.dark {
+  --background: #061019;
+  --foreground: #EAF1F7;
+}
+
+/* ==========================================================================
+   DARK THEME
+   Scale:   page #061019 · card rgb(19 34 50 / 97%) · tiles #123A52–#17406A
+   Accent:  #7DD3FC text · hairlines rgb(156 198 235 / 14–26%)
+            solid focus/selected #38BDF8 (≥3:1 against the card surface)
+   Every rule below is keyed to an exact Tailwind class name — renaming a
+   color class in a component requires a matching rule here.
+   The public home page is exempt via the `.home-page` block at the bottom.
+   ========================================================================== */
+
+/* ---- Page & full-bleed white roots -----------------------------------
+   background-COLOR (not the shorthand) so the AppShell glow layer's
+   background-image survives in dark mode. */
+.dark body,
+.dark .bg-\[\#FFFFFF\],
+.dark .bg-\[\#F4F9FD\] {
+  background-color: #061019;
+  color: #EAF1F7;
+}
+
+/* Sky glow behind the app shell (`.app-glow` on AppShell root). The
+   light values live in the Tailwind arbitrary gradient class; dark gets
+   a stronger version so the glass has something to refract on the
+   near-black page. */
+.dark .app-glow {
+  background-image: radial-gradient(640px at 18% -6%, rgba(56, 189, 248, 0.16), transparent 60%),
+    radial-gradient(720px at 88% 8%, rgba(14, 165, 233, 0.12), transparent 55%);
+}
+
+/* ---- Card / panel surface (glass cards + solid bg-white panels) ------
+   Glass cards go translucent (68%); solid panels keep a touch more body
+   (88%) so inputs/buttons inside them stay legible. */
+.dark .bg-white\/75 {
+  background-color: rgb(19 34 50 / 68%) !important;
+}
+
+.dark .bg-white {
+  background-color: rgb(19 34 50 / 88%) !important;
+}
+
+/* ---- Elevation --------------------------------------------------------
+   The light-mode card shadow is blue-on-blue and vanishes on the dark
+   page (page↔card contrast was 1.07:1). Swap it for a black drop shadow
+   plus a faint top highlight so the glass edge still reads. Overriding
+   --tw-shadow keeps ring composition intact. */
+.dark .shadow-\[0_10px_30px_rgba\(6\,45\,70\,0\.07\)\] {
+  --tw-shadow: 0 12px 32px rgb(0 0 0 / 50%), inset 0 1px 0 rgb(255 255 255 / 7%) !important;
+}
+
+/* ---- Frosted chrome (sidebar, top bar, dropdowns) -------------------- */
+.dark .bg-\[\#075985\]\/90 {
+  background-color: rgb(4 42 66 / 93%) !important;
+}
+
+.dark .bg-white\/92 {
+  background-color: rgb(15 29 43 / 74%) !important;
+}
+
+.dark .shadow-\[0_16px_40px_rgba\(15\,23\,42\,0\.12\)\] {
+  --tw-shadow-color: rgb(0 0 0 / 35%);
+}
+
+/* ---- Borders & focus --------------------------------------------------
+   Solid #0369A1 is the input-focus / selected-state border; on the dark
+   surface it only reaches 2.9:1, so flip it to #38BDF8 (≥7:1). The alpha
+   steps are the glass rim — brighter than before so the edge catches
+   light against the now-translucent card. */
+.dark .border-\[\#0369A1\]\/10 {
+  border-color: rgb(156 198 235 / 20%) !important;
+}
+
+.dark .border-\[\#0369A1\]\/15 {
+  border-color: rgb(156 198 235 / 26%) !important;
+}
+
+.dark .border-\[\#0369A1\]\/20 {
+  border-color: rgb(156 198 235 / 36%) !important;
+}
+
+.dark .border-\[\#0369A1\],
+.dark .focus\:border-\[\#0369A1\]:focus {
+  border-color: #38BDF8 !important;
+}
+
+.dark .focus\:ring-\[\#0369A1\]\/15:focus,
+.dark .focus\:ring-\[\#0369A1\]\/20:focus {
+  --tw-ring-color: rgb(56 189 248 / 60%) !important;
+}
+
+.dark .focus-visible\:ring-\[\#0369A1\]:focus-visible,
+.dark .focus-visible\:ring-\[\#0284C7\]:focus-visible,
+.dark .ring-\[\#0284C7\] {
+  --tw-ring-color: #38BDF8 !important;
+}
+
+/* ---- Accent text ------------------------------------------------------
+   Includes the hover variants — without these, hovering a card link in
+   dark mode flipped it back to deep navy (invisible). */
+.dark .text-\[\#075985\],
+.dark .hover\:text-\[\#075985\]:hover,
+.dark .group-hover\:text-\[\#075985\]:is(:where(.group):hover *) {
+  color: #7DD3FC !important;
+}
+
+.dark .text-\[\#0369A1\]\/45 {
+  color: rgb(125 211 252 / 55%) !important;
+}
+
+.dark .hover\:text-\[\#0F2A3D\]:hover {
+  color: #FFFFFF !important;
+}
+
+/* ---- Progress fills --------------------------------------------------- */
+.dark .bg-\[\#0284C7\] {
+  background-color: #38BDF8 !important;
+}
+
+.dark .bg-\[\#CFE9FB\] {
+  background-color: #14344C !important;
+}
+
+/* ---- Pastel tiles — only INSIDE card surfaces -------------------------
+   In light mode these are bright #E0F2FE-family chips; left as-is they
+   glare on dark cards (16:1 against the surface). Darkened here they read
+   as raised tiles with icons/labels flipped to #7DD3FC. Tiles on the
+   frosted chrome (sidebar active pill, top-bar chips) live outside any
+   bg-white* surface and intentionally keep their light fill — the bright
+   pill is the selection affordance on the sky chrome. */
+.dark .bg-white\/75 .bg-\[\#E0F2FE\],
+.dark .bg-white\/92 .bg-\[\#E0F2FE\],
+.dark .bg-white .bg-\[\#E0F2FE\] {
+  background-color: #16395A !important;
+}
+
+.dark .bg-white\/75 .bg-\[\#F0F9FF\],
+.dark .bg-white\/92 .bg-\[\#F0F9FF\],
+.dark .bg-white .bg-\[\#F0F9FF\] {
+  background-color: #143552 !important;
+}
+
+.dark .bg-white\/75 .bg-\[\#CFFAFE\],
+.dark .bg-white\/92 .bg-\[\#CFFAFE\],
+.dark .bg-white .bg-\[\#CFFAFE\] {
+  background-color: #123A52 !important;
+}
+
+.dark .bg-white\/75 .bg-\[\#DCEEFC\],
+.dark .bg-white\/92 .bg-\[\#DCEEFC\],
+.dark .bg-white .bg-\[\#DCEEFC\] {
+  background-color: #17406A !important;
+}
+
+/* Paired text on those tiles: accent labels → #7DD3FC, navy body copy →
+   #DCEEFC (7–10:1 on the darkened fill). Scoped to the same card
+   surfaces so chrome pills keep #0369A1 on their light fill. */
+.dark .bg-white\/75 .text-\[\#0369A1\],
+.dark .bg-white\/92 .text-\[\#0369A1\],
+.dark .bg-white .text-\[\#0369A1\] {
+  color: #7DD3FC !important;
+}
+
+.dark .bg-white\/75 .text-\[\#0A1F2E\],
+.dark .bg-white\/92 .text-\[\#0A1F2E\],
+.dark .bg-white .text-\[\#0A1F2E\] {
+  color: #DCEEFC !important;
+}
+
+/* ---- Text ------------------------------------------------------------- */
+.dark .text-\[\#0F2A3D\] {
+  color: #EAF1F7 !important;
+}
+
+.dark .text-\[\#5B7184\] {
+  color: #9FB0BF !important;
+}
+
+/* ---- Muted fills, grays, semantic tints ------------------------------- */
+.dark .bg-gray-50,
+.dark .bg-gray-50\/50,
+.dark .bg-gray-100,
+.dark .bg-gray-200 {
+  background-color: #0F1D2B !important;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200\/60,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #1E2A38 !important;
+}
+
+.dark .text-gray-700,
+.dark .text-gray-800,
+.dark .text-gray-900 {
+  color: #EAF1F7 !important;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-600 {
+  color: #9FB0BF !important;
+}
+
+.dark .hover\:bg-gray-50:hover,
+.dark .hover\:bg-gray-50\/50:hover {
+  background-color: #0F1D2B !important;
+}
+
+.dark .bg-white\/5,
+.dark .bg-white\/10 {
+  background-color: rgb(255 255 255 / 8%) !important;
+}
+
+.dark .border-emerald-200,
+.dark .border-amber-200,
+.dark .border-blue-200,
+.dark .border-red-200 {
+  border-color: #1E2A38 !important;
+}
+
+.dark .bg-emerald-50,
+.dark .bg-amber-50,
+.dark .bg-blue-50,
+.dark .bg-red-50 {
+  background-color: #0F1D2B !important;
+}
+
+.dark .bg-emerald-100,
+.dark .bg-red-100 {
+  background-color: #1E2A38 !important;
+}
+
+/* ---- The public home page keeps its original light editorial palette --
+   Home-only classes (C9DCED/DCF0F6/123247/teal etc.) intentionally have
+   no general dark rule any more: they render at their light values on
+   their own. Only the classes shared with the app need re-identities. */
+.dark .home-page {
+  background-color: #FFFFFF !important;
+  color: #0F2A3D !important;
+}
+
+.dark .home-page .bg-white {
+  background-color: #ffffff !important;
+}
+
+.dark .home-page .text-\[\#0F2A3D\] {
+  color: #0F2A3D !important;
+}
+
+.dark .home-page .text-\[\#5B7184\] {
+  color: #5B7184 !important;
+}
+
+/* ---- Native controls & selection -------------------------------------- */
+.dark input,
+.dark textarea,
+.dark select {
+  color-scheme: dark;
+}
+::selection {
+  background: #C9DCED;
+  color: #0F2A3D;
+}
