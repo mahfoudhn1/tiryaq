@@ -42,6 +42,7 @@ export const en = {
   password: 'Password',
   continueToApp: 'Sign in',
   signingIn: 'Signing in…',
+  loginRequiredFields: 'Enter your email and password to continue.',
   loginHeroTitle: 'Make every study session count.',
   loginHeroSubtitle:
     'Practice cases, review your weak topics, and keep a calm, evidence-based view of your progress.',

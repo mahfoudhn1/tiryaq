@@ -41,6 +41,7 @@ export const ar: Dictionary = {
   password: 'كلمة المرور',
   continueToApp: 'تسجيل الدخول',
   signingIn: 'جارٍ تسجيل الدخول…',
+  loginRequiredFields: 'أدخل بريدك الإلكتروني وكلمة المرور للمتابعة.',
   loginHeroTitle: 'اجعل كل جلسة دراسة ذات قيمة.',
   loginHeroSubtitle: 'تدرّب على الحالات، راجع نقاط ضعفك، وحافظ على نظرة هادئة لتقدّمك.',
   cardiologyMastery: 'إتقان القلب',

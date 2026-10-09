@@ -41,6 +41,7 @@ export const fr: Dictionary = {
   password: 'Mot de passe',
   continueToApp: 'Se connecter',
   signingIn: 'Connexion…',
+  loginRequiredFields: 'Saisissez votre adresse e-mail et votre mot de passe pour continuer.',
   loginHeroTitle: 'Rentabilisez chaque session d\u2019étude.',
   loginHeroSubtitle:
     'Pratiquez des cas, révisez vos points faibles et gardez une vue sereine et fondée sur les preuves de vos progrès.',

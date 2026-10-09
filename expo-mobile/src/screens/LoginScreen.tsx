@@ -8,6 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import { useAppDispatch } from '@/store/hooks';
+import { setUser } from '@/store/slices/authSlice';
+import { login } from '@/api/auth';
 import { TiryaqLogo } from '@/components/brand/TiryaqLogo';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -16,10 +19,32 @@ import { useTheme, fontSize, fontWeight, radius, spacing } from '@/theme';
 import { useTranslation } from '@/i18n';
 
 export default function LoginScreen() {
+  const dispatch = useAppDispatch();
   const { colors } = useTheme();
   const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const submit = async () => {
+    const normalizedEmail = email.trim();
+    if (!normalizedEmail || !password) {
+      setError(t('loginRequiredFields'));
+      return;
+    }
+
+    setSubmitting(true);
+    setError(null);
+    try {
+      const auth = await login(normalizedEmail, password);
+      dispatch(setUser(auth.user));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('error'));
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <ScreenBackground>
@@ -54,6 +79,7 @@ export default function LoginScreen() {
                 placeholder={t('emailAddress')}
                 returnKeyType="next"
                 style={styles.field}
+                editable={!submitting}
               />
               <Input
                 label={t('password')}
@@ -64,13 +90,23 @@ export default function LoginScreen() {
                 placeholder={t('password')}
                 returnKeyType="done"
                 style={styles.field}
+                editable={!submitting}
               />
             </View>
 
+            {error ? (
+              <Text accessibilityRole="alert" style={[styles.error, { color: colors.danger }]}>
+                {error}
+              </Text>
+            ) : null}
+
             <Button
-              title={t('continueToApp')}
+              title={submitting ? t('signingIn') : t('continueToApp')}
               size="lg"
               fullWidth
+              loading={submitting}
+              disabled={submitting}
+              onPress={submit}
               iconRight="ArrowRight"
               style={styles.loginButton}
             />
@@ -135,6 +171,7 @@ const styles = StyleSheet.create({
   fields: { width: '100%', marginTop: spacing.xl },
   field: { marginTop: spacing.md },
   loginButton: { width: '100%', marginTop: spacing.xl },
+  error: { width: '100%', marginTop: spacing.md, fontSize: fontSize.sm, lineHeight: 20 },
   dividerRow: { width: '100%', flexDirection: 'row', alignItems: 'center', gap: spacing.md, marginVertical: spacing.lg },
   divider: { flex: 1, height: StyleSheet.hairlineWidth },
   dividerLabel: { fontSize: fontSize.xs, fontWeight: fontWeight.semibold, letterSpacing: 1 },
