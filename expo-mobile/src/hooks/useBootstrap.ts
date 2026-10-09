@@ -13,7 +13,7 @@ const BOOTSTRAP_TIMEOUT_MS = 5_000;
  * Boots the app once: restores persisted settings (theme/language/notifications)
  * and the auth session, then reports readiness so we don't flash the wrong theme.
  */
-export function useBootstrap() {
+export function useBootstrap(minimumSplashMs = 0) {
   const dispatch = useAppDispatch();
   const hydrated = useAppSelector((s) => s.settings.hydrated);
   const themeMode = useAppSelector((s) => s.settings.themeMode);
@@ -23,6 +23,8 @@ export function useBootstrap() {
 
   useEffect(() => {
     let mounted = true;
+    const startedAt = Date.now();
+    let splashTimeout: ReturnType<typeof setTimeout> | undefined;
     const bootstrapTimeout = setTimeout(() => {
       if (mounted) setLoading(false);
     }, BOOTSTRAP_TIMEOUT_MS);
@@ -51,7 +53,12 @@ export function useBootstrap() {
         if (mounted) dispatch(clearUser());
       } finally {
         clearTimeout(bootstrapTimeout);
-        if (mounted) setLoading(false);
+        if (mounted) {
+          const remaining = Math.max(0, minimumSplashMs - (Date.now() - startedAt));
+          splashTimeout = setTimeout(() => {
+            if (mounted) setLoading(false);
+          }, remaining);
+        }
       }
     }
 
@@ -59,8 +66,9 @@ export function useBootstrap() {
     return () => {
       mounted = false;
       clearTimeout(bootstrapTimeout);
+      if (splashTimeout) clearTimeout(splashTimeout);
     };
-  }, [dispatch]);
+  }, [dispatch, minimumSplashMs]);
 
   useEffect(() => {
     if (!hydrated) return;

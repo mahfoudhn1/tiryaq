@@ -32,7 +32,7 @@ export const en = {
 
   // Login
   welcomeBack: 'Welcome back',
-  loginSubtitle: 'Choose a demo role to explore the Tiryaq learning platform.',
+  loginSubtitle: 'Sign in to continue your clinical learning journey.',
   demoAccount: 'Demo account',
   roleStudent: 'Student',
   roleInstructor: 'Instructor',
@@ -40,7 +40,7 @@ export const en = {
   roleAdminDesc: 'Platform operations',
   emailAddress: 'Email address',
   password: 'Password',
-  continueToApp: 'Continue to Tiryaq',
+  continueToApp: 'Sign in',
   signingIn: 'Signing in…',
   loginHeroTitle: 'Make every study session count.',
   loginHeroSubtitle:

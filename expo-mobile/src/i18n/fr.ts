@@ -31,7 +31,7 @@ export const fr: Dictionary = {
   navLive: 'Direct',
 
   welcomeBack: 'Bon retour',
-  loginSubtitle: 'Choisissez un rôle de démonstration pour explorer la plateforme Tiryaq.',
+  loginSubtitle: 'Connectez-vous pour poursuivre votre parcours d’apprentissage clinique.',
   demoAccount: 'Compte de démonstration',
   roleStudent: 'Étudiant',
   roleInstructor: 'Enseignant',
@@ -39,7 +39,7 @@ export const fr: Dictionary = {
   roleAdminDesc: 'Opérations de la plateforme',
   emailAddress: 'Adresse e-mail',
   password: 'Mot de passe',
-  continueToApp: 'Continuer vers Tiryaq',
+  continueToApp: 'Se connecter',
   signingIn: 'Connexion…',
   loginHeroTitle: 'Rentabilisez chaque session d\u2019étude.',
   loginHeroSubtitle:

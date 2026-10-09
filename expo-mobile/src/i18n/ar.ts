@@ -31,7 +31,7 @@ export const ar: Dictionary = {
   navLive: 'مباشر',
 
   welcomeBack: 'مرحبًا بعودتك',
-  loginSubtitle: 'اختر حسابًا تجريبيًا لاستكشاف منصة ترياق.',
+  loginSubtitle: 'سجّل الدخول لمتابعة رحلتك في التعلّم السريري.',
   demoAccount: 'حساب تجريبي',
   roleStudent: 'طالب',
   roleInstructor: 'مدرّس',
@@ -39,7 +39,7 @@ export const ar: Dictionary = {
   roleAdminDesc: 'عمليات المنصة',
   emailAddress: 'البريد الإلكتروني',
   password: 'كلمة المرور',
-  continueToApp: 'المتابعة إلى ترياق',
+  continueToApp: 'تسجيل الدخول',
   signingIn: 'جارٍ تسجيل الدخول…',
   loginHeroTitle: 'اجعل كل جلسة دراسة ذات قيمة.',
   loginHeroSubtitle: 'تدرّب على الحالات، راجع نقاط ضعفك، وحافظ على نظرة هادئة لتقدّمك.',

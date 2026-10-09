@@ -10,6 +10,7 @@ import { ThemeProvider, useTheme } from '@/theme';
 import { useBootstrap } from '@/hooks/useBootstrap';
 import { AppNavigator } from '@/navigation/AppNavigator';
 import { TiryaqLogo } from '@/components/brand/TiryaqLogo';
+import { SplashHeartbeat } from '@/components/brand/SplashHeartbeat';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,13 +23,14 @@ const queryClient = new QueryClient({
 });
 
 function Root() {
-  const { loading } = useBootstrap();
+  const { loading } = useBootstrap(1_400);
   const { colors, isDark } = useTheme();
 
   if (loading) {
     return (
       <View style={[styles.boot, { backgroundColor: colors.background }]}>
-        <TiryaqLogo size={220} animated />
+        <TiryaqLogo size={270} />
+        <SplashHeartbeat />
       </View>
     );
   }
