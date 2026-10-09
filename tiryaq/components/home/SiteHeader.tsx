@@ -29,13 +29,7 @@ export function SiteHeader({ t, language, onLanguageChange }: SiteHeaderProps) {
     <header className="sticky top-0 z-50 border-b border-[#DCE3EA] bg-[#F4F9FD]/85 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[72px] max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-3 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Tiryaq home">
-          <Image src="/tiryaqlogo.svg" alt="" aria-hidden width={128} height={84} className="h-10 w-[62px] object-contain" />
-          <span>
-            <span className="block text-[21px] font-bold leading-none tracking-[-0.05em] text-[#123247]">tiryaq</span>
-            <span className="mt-1 block text-[9px] font-bold leading-none tracking-[0.17em] text-[#1E8A82]">
-              ترياق · CLINICAL LEARNING
-            </span>
-          </span>
+          <Image src="/tiryaqlogo.svg" alt="Tiryaq" width={256} height={166} className="h-14 w-[112px] object-contain sm:w-[128px]" />
         </Link>
 
         <nav className="hidden items-center gap-8 text-[13px] font-semibold text-[#5B7184] md:flex">
