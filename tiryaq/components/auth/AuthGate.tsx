@@ -57,9 +57,7 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#FFFFFF]">
-      <span className="rounded-xl bg-white p-2 shadow-sm dark:bg-[#132232]">
-        <Image src="/tiryaqlogo.svg" alt="Tiryaq" width={128} height={84} className="h-12 w-[74px] animate-pulse object-contain" />
-      </span>
+      <Image src="/tiryaqlogonobg.png" alt="Tiryaq" width={512} height={260} className="h-16 w-[150px] animate-pulse object-contain dark:brightness-0 dark:invert dark:sepia-[.18] dark:saturate-[2] dark:hue-rotate-[160deg]" />
       <p className="text-[13px] font-semibold text-[#5B7184]">Restoring your session…</p>
       <Link href={REDIRECT_TARGET} className="text-[12px] font-bold text-[#075985] hover:underline">
         Sign in instead

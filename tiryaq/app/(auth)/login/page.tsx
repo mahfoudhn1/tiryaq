@@ -59,7 +59,7 @@ export default function LoginPage() {
             <ArrowLeft size={16} /> Back to home
           </Link>
           <div className="mt-10 flex items-center gap-3">
-            <Image src="/tiryaqlogo.svg" alt="Tiryaq" width={256} height={166} className="h-14 w-[112px] object-contain" />
+            <Image src="/tiryaqlogonobg.png" alt="Tiryaq" width={512} height={260} className="h-[72px] w-[160px] object-contain dark:brightness-0 dark:invert dark:sepia-[.18] dark:saturate-[2] dark:hue-rotate-[160deg]" />
           </div>
           <h1 className="mt-10 text-3xl font-bold tracking-[-0.06em] text-[#0F2A3D]">Welcome back</h1>
           <p className="mt-2 text-[14px] leading-6 text-[#5B7184]">Choose a demo role to explore the Tiryaq learning platform.</p>
