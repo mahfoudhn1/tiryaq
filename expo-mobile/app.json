@@ -7,7 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "scheme": "tiryaq",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false
     },
@@ -16,11 +18,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0f172a"
       },
-      "package": "com.tiryaq.mobile",
+      "package": "com.tiryaq.mobile"
     },
     "plugins": [],
     "experiments": {
       "typedRoutes": false
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ad3b9975-bf5f-4ae8-a86c-8d0bb09054c8"
+      }
+    },
+    "owner": "mahfoudhn"
   }
 }

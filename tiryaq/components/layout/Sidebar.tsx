@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import {
   BarChart3,
@@ -10,7 +11,6 @@ import {
   ClipboardCheck,
   GraduationCap,
   PillBottle,
-  HeartPulse,
   LayoutDashboard,
   Settings,
   Siren,
@@ -87,8 +87,8 @@ export function Sidebar() {
         {/* Logo */}
         <div className="flex h-[68px] shrink-0 items-center justify-between border-b border-white/15 px-5">
           <Link href="/" className="flex items-center gap-3" aria-label="Tiryaq home">
-            <span className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-[#F0F9FF] text-[#0369A1]">
-              <HeartPulse size={18} strokeWidth={2.4} />
+            <span className="flex h-9 w-[56px] items-center justify-center overflow-hidden rounded-[9px] bg-[#F0F9FF] px-1">
+              <Image src="/tiryaqlogo.svg" alt="" aria-hidden width={128} height={84} className="h-8 w-full object-contain" />
             </span>
             <span>
               <span className="block text-[18px] font-bold leading-none tracking-[-0.05em] text-white">tiryaq</span>

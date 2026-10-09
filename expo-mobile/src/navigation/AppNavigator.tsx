@@ -12,6 +12,7 @@ import { useReduceMotion } from '@/hooks/useA11y';
 import { GlassSurface } from '@/components/ui/GlassCard';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Avatar } from '@/components/ui/Avatar';
+import { TiryaqLogo } from '@/components/brand/TiryaqLogo';
 
 import LoginScreen from '@/screens/LoginScreen';
 import DashboardScreen from '@/screens/DashboardScreen';
@@ -259,9 +260,7 @@ function TopBar() {
               <Icon name="ArrowLeft" size={18} color={colors.text} />
             </Pressable>
           ) : (
-            <View style={[styles.brandMark, { backgroundColor: colors.primary }]}>
-              <Icon name="HeartPulse" size={17} color={colors.onPrimary} strokeWidth={2.4} />
-            </View>
+            <TiryaqLogo size={42} />
           )}
           <View style={styles.brandText}>
             <Text style={[styles.logoText, { color: colors.text }]}>{t('appName')}</Text>

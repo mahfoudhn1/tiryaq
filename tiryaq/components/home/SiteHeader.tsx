@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { ChevronRight, HeartPulse } from 'lucide-react';
+import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
 import { LANGUAGES, type Language } from '@/store/slices/localeSlice';
 import type { Translate } from './shared';
 
@@ -28,9 +29,7 @@ export function SiteHeader({ t, language, onLanguageChange }: SiteHeaderProps) {
     <header className="sticky top-0 z-50 border-b border-[#DCE3EA] bg-[#F4F9FD]/85 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[72px] max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-3 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Tiryaq home">
-          <span className="flex h-10 w-10 items-center justify-center rounded-[13px] bg-[#123247] text-white">
-            <HeartPulse size={21} />
-          </span>
+          <Image src="/tiryaqlogo.svg" alt="" aria-hidden width={128} height={84} className="h-10 w-[62px] object-contain" />
           <span>
             <span className="block text-[21px] font-bold leading-none tracking-[-0.05em] text-[#123247]">tiryaq</span>
             <span className="mt-1 block text-[9px] font-bold leading-none tracking-[0.17em] text-[#1E8A82]">

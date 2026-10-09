@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { HeartPulse } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setUser } from '@/store/slices/authSlice';
 import { fetchMe } from '@/lib/api/auth';
@@ -57,8 +57,8 @@ export function AuthGate({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#FFFFFF]">
-      <span className="flex h-11 w-11 animate-pulse items-center justify-center rounded-[14px] bg-[#0369A1] text-white">
-        <HeartPulse size={22} />
+      <span className="rounded-xl bg-white p-2 shadow-sm dark:bg-[#132232]">
+        <Image src="/tiryaqlogo.svg" alt="Tiryaq" width={128} height={84} className="h-12 w-[74px] animate-pulse object-contain" />
       </span>
       <p className="text-[13px] font-semibold text-[#5B7184]">Restoring your session…</p>
       <Link href={REDIRECT_TARGET} className="text-[12px] font-bold text-[#075985] hover:underline">

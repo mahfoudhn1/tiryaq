@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -9,6 +9,7 @@ import { store } from '@/store/store';
 import { ThemeProvider, useTheme } from '@/theme';
 import { useBootstrap } from '@/hooks/useBootstrap';
 import { AppNavigator } from '@/navigation/AppNavigator';
+import { TiryaqLogo } from '@/components/brand/TiryaqLogo';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +28,7 @@ function Root() {
   if (loading) {
     return (
       <View style={[styles.boot, { backgroundColor: colors.background }]}>
-        <ActivityIndicator size="large" color={colors.primary} />
+        <TiryaqLogo size={220} animated />
       </View>
     );
   }

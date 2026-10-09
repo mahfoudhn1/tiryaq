@@ -15,6 +15,7 @@ import { login, demoLogin } from '@/api/auth';
 import type { UserRole } from '@/types/medical';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
+import { TiryaqLogo } from '@/components/brand/TiryaqLogo';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Input } from '@/components/ui/Input';
 import { Reveal } from '@/components/ui/Reveal';
@@ -125,9 +126,7 @@ export default function LoginScreen() {
 
           <Reveal delay={90} style={styles.form}>
             <GlassCard variant="elevated" padding={22}>
-              <View style={[styles.brandMark, { backgroundColor: colors.primary }]}>
-                <Icon name="HeartPulse" size={20} color={colors.onPrimary} strokeWidth={2.4} />
-              </View>
+              <TiryaqLogo size={52} />
               <Text style={[styles.title, { color: colors.text }]}>{t('welcomeBack')}</Text>
               <Text style={[styles.subtitle, { color: colors.textMuted }]}>{t('loginSubtitle')}</Text>
 

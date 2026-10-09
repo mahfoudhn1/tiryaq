@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowRight, HeartPulse, LockKeyhole, Mail } from 'lucide-react';
+import { ArrowLeft, ArrowRight, LockKeyhole, Mail } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import { setUser } from '@/store/slices/authSlice';
 import { useAppDispatch } from '@/store/hooks';
@@ -58,7 +59,7 @@ export default function LoginPage() {
             <ArrowLeft size={16} /> Back to home
           </Link>
           <div className="mt-10 flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-[14px] bg-[#0369A1] text-white"><HeartPulse size={22} /></span>
+            <Image src="/tiryaqlogo.svg" alt="" aria-hidden width={128} height={84} className="h-11 w-[68px] object-contain" />
             <div><p className="text-[22px] font-bold tracking-[-0.05em] text-[#0F2A3D]">tiryaq</p><p className="text-[9px] font-bold tracking-[0.15em] text-[#075985]">CLINICAL LEARNING</p></div>
           </div>
           <h1 className="mt-10 text-3xl font-bold tracking-[-0.06em] text-[#0F2A3D]">Welcome back</h1>

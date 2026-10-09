@@ -1,0 +1,39 @@
+{
+  "cli": {
+    "version": ">= 13.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "node": "24.21.0",
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://tiryaq-5zqh.onrender.com"
+      }
+    },
+    "preview": {
+      "node": "24.21.0",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://tiryaq-5zqh.onrender.com"
+      }
+    },
+    "production": {
+      "node": "24.21.0",
+      "autoIncrement": true,
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://tiryaq-5zqh.onrender.com"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
